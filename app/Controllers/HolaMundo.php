@@ -2,11 +2,11 @@
 
 namespace App\Controllers;
 
-class Home extends BaseController
+class HolaMundo extends BaseController
 {
     public function index()
     {
-        return view('includes/header');
+        return view('hola_mundo');
     }
 
     public function welcome()

@@ -17,7 +17,7 @@ if (is_file(SYSTEMPATH . 'Config/Routes.php')) {
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('Home');
+$routes->setDefaultController('User');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
@@ -25,7 +25,7 @@ $routes->set404Override();
 // where controller filters or CSRF protection are bypassed.
 // If you don't want to define all routes, please use the Auto Routing (Improved).
 // Set `$autoRoutesImproved` to true in `app/Config/Feature.php` and set the following to true.
-//$routes->setAutoRoute(false);
+$routes->setAutoRoute(false);
 
 /*
  * --------------------------------------------------------------------
@@ -35,9 +35,31 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/','User::index');
 
-$routes->get('/login', 'User::index');
+$routes->group('/',function($routes)
+{
+    $routes->get('','User::dashboard', ['as' => 'dashboard']); //TODO: Redireccionar a login si no está logueado y viceversa
+
+    $routes->get('informe','User::informe', ['as' => 'informe']); //TODO: Redireccionar a login si no está logueado 
+
+    $routes->get('cliente','User::cliente', ['as' => 'cliente']); //TODO: Redireccionar a login si no está logueado 
+
+
+});
+
+$routes->group('auth',function($routes)
+{
+    $routes->get('login', 'User::index', ['as' => 'login']);
+
+    $routes->post('login', 'User::login');
+
+    $routes->get('logout', 'User::logout', ['as' => 'logout']);
+    
+    $routes->addRedirect('', 'login');
+    
+});
+
+
 
 /*
  * --------------------------------------------------------------------

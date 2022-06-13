@@ -1,0 +1,18 @@
+/* centrar en pantalla */
+.div-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+article{
+  min-height: 85vh;
+}
+
+header{
+  min-height: 10vh;
+}
+
+footer{
+  min-height: 5vh;
+}

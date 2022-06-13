@@ -13,7 +13,7 @@
         <ul class="navbar-nav mx-auto ">
           <li class="nav-item mx-3"> Nombre </li>
           <li class="nav-item mx-3"> Admin </li>
-          <li class="nav-item mx-3"> Ultima conexion: <?php echo date('d-F-Y h:i') ?> </li>
+          <li class="nav-item mx-3"> Ultima conexion: <?php echo date('d-m-Y H:i') ?> </li>
         </ul>
       </div> <!-- navbar-collapse end.// -->
     </div> <!-- container end.// -->

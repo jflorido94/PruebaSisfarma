@@ -24,7 +24,7 @@ class App extends BaseConfig
      *
      * @var string
      */
-    public $baseURL = 'https://sisfarma.herokuapp.com/public/';
+    public $baseURL = 'http://prueba.sisfarma.com/';
 
     /**
      * --------------------------------------------------------------------------

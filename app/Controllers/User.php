@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Entities\EntUser;
+use App\Models\AccesoModel;
 use App\Models\UserModel;
 
 class User extends BaseController
@@ -23,22 +24,32 @@ class User extends BaseController
     {
         $session = session();
 
-        $userModel = new UserModel();
+        $user_obj = new UserModel();
 
         $email = $this->request->getVar('email');
         $password = $this->request->getVar('password');
 
-        $data = $userModel->where('email', $email)->first();
+        $data = $user_obj->where('email', $email)->first();
 
         if($data){
-            $pass = $data->clave;
+            $pass = $data['clave'];
             $authenticatePassword = password_verify($password, $pass);
             if($authenticatePassword){
+
+                $acceso = [
+                    'idUsuario' => $data['id'],
+                    'fecha'=> date('Y-m-d H:i:s'),
+                ];
+
+                $acceso_obj = new AccesoModel();
+                $acceso_obj->insert($acceso);
+                
                 $ses_data = [
-                    'id' => $data->id,
-                    'name' => $data->nombre,
-                    'email' => $data->email,
-                    'rol' => $data->rolId,
+                    'id' => $data['id'],
+                    'name' => $data['nombre']." ". $data['apellidos'],
+                    'email' => $data['email'],
+                    'rol' => $data['rolId'],
+                    'ultimoAcceso' => $data['ultimoAcceso'],
                     'isLoggedIn' => TRUE
                 ];
 
@@ -49,7 +60,7 @@ class User extends BaseController
             }else{
                 $session->setFlashdata('msg', 'Password is incorrect.');
 
-               return redirect()->to('login');
+               return redirect()->to(route_to('login'));
             }
 
         }else{
@@ -76,37 +87,26 @@ class User extends BaseController
 		}
     }
 
-    public function informe()
-    {
-        return view('informe');
-    }
-
-    public function cliente()
-    {
-        return view('cliente');
-    }
-
     public function registrar()
     {
         $data = [
             'nombre'    => 'Usuario',
             'apellidos' => 'Sisfarma',
-            'usuario'   => 'User',
+            'usuario'   => 'User2',
             'clave'     => '123456',
-            'email'     => 'usuario@sisfarma.com',
+            'email'     => 'usuario2@sisfarma.com',
             'rolId'     => 2,
             // 'fechaBaja',
             // 'ultimoAcceso',
             // 'regenerandoVentas'
         ];
 
-        $user = new EntUser($data);
 
-        $model = model('UserModel');
+        $user_obj = new UserModel();
 
-        // $model->save($user);
+        $user_obj->insert($data);
 
-        d($user);
+        // d($data);
     }
 
 }

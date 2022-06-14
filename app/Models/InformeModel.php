@@ -2,37 +2,26 @@
 
 namespace App\Models;
 
-use App\Entities\EntUser;
 use CodeIgniter\Model;
 
-class UserModel extends Model
+class InformeModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'usuarios';
+    protected $table            = 'informes';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
-    protected $useSoftDeletes   = true;
+    protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [
-        'id',
-        'nombre',
-        'apellidos',
-        'usuario',
-        'clave',
-        'email',
-        'rolId',
-        'fechaAlta',
-        'ultimoAcceso'
-    ];
+    protected $allowedFields    = [];
 
     // Dates
-    protected $useTimestamps = true;
+    protected $useTimestamps = false;
     protected $dateFormat    = 'datetime';
-    protected $createdField  = 'fechaAlta';
-    protected $updatedField  = null;
-    protected $deletedField  = 'fechaBaja';
+    protected $createdField  = 'created_at';
+    protected $updatedField  = 'updated_at';
+    protected $deletedField  = 'deleted_at';
 
     // Validation
     protected $validationRules      = [];
@@ -42,7 +31,7 @@ class UserModel extends Model
 
     // Callbacks
     protected $allowCallbacks = true;
-    protected $beforeInsert   = ['hashPassword'];
+    protected $beforeInsert   = [];
     protected $afterInsert    = [];
     protected $beforeUpdate   = [];
     protected $afterUpdate    = [];
@@ -50,16 +39,4 @@ class UserModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
-
-    protected function hashPassword(array $data)
-    {   
-        if (! isset($data['data']['clave'])) {
-            return $data;
-        }
-
-        $clave = $data['data']['clave'];
-        $data['data']['clave'] = password_hash($clave, PASSWORD_DEFAULT);
-
-        return $data;
-    }
 }

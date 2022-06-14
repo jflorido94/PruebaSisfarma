@@ -40,9 +40,9 @@ $routes->group('/',function($routes)
 {
     $routes->get('','User::dashboard', ['as' => 'dashboard']); //TODO: Redireccionar a login si no está logueado y viceversa
 
-    $routes->get('informe','User::informe', ['as' => 'informe']); //TODO: Redireccionar a login si no está logueado 
+    $routes->get('informe','Informe::index', ['as' => 'informe']); //TODO: Redireccionar a login si no está logueado 
 
-    $routes->get('cliente','User::cliente', ['as' => 'cliente']); //TODO: Redireccionar a login si no está logueado 
+    $routes->get('cliente','Cliente::index', ['as' => 'cliente']); //TODO: Redireccionar a login si no está logueado 
 
 
 });
@@ -54,6 +54,8 @@ $routes->group('auth',function($routes)
     $routes->post('login', 'User::login');
 
     $routes->get('logout', 'User::logout', ['as' => 'logout']);
+    
+    $routes->get('reg', 'User::registrar', ['as' => 'reg']);
     
     $routes->addRedirect('', 'login');
     

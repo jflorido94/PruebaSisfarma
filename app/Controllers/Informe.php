@@ -8,6 +8,15 @@ class Informe extends BaseController
 {
     public function index()
     {
-        return view('informe');
+        if(!session()->get('isLoggedIn')) {
+			return redirect()->to(route_to('login'));
+		} elseif (!session()->get('rolId')==1){
+            return redirect()->to(route_to('dashboard'));
+        } else {
+			// helper(['form']);
+
+            return view('informe');
+		}
+        
     }
 }

@@ -1,3 +1,5 @@
+<?php $session = session(); ?>
+
 <?= $this->extend('layouts/main') ?>
 
 <?= $this->section('title') ?>
@@ -12,6 +14,7 @@ Dashboard
 ?>
 <!-- TODO:eliminar si el usuario no es admin -->
 <div class="container row row-cols-1 row-cols-sm-3 g-3 d-flex justify-content-around ">
+    <?php if ($session->rolId==1) { ?>
     <a href="<?= base_url(route_to('informe')) ?>" class="col text-decoration-none text-reset  align-self-stretch">
         <div class="card bg-light">
             <img src="<?= base_url('assets/images/informe.webp') ?>" class="card-img-top" alt="card-grid-image" >
@@ -20,6 +23,7 @@ Dashboard
             </div>
         </div>
     </a>
+    <?php } ?>
     <a href="<?= base_url(route_to('cliente')) ?>" class="col text-decoration-none text-reset  ">
         <div class="card bg-light">
             <img src="<?= base_url('assets/images/cliente.webp') ?>" class="card-img-top" alt="card-grid-image" >

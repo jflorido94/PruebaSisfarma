@@ -8,6 +8,13 @@ class Cliente extends BaseController
 {
     public function index()
     {
-        return view('cliente');
+        if(!session()->get('isLoggedIn')) {
+			return redirect()->to(route_to('login'));
+		} else {
+			// helper(['form']);
+
+            return view('cliente');
+		}
+        
     }
 }

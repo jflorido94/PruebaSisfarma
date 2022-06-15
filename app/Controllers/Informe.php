@@ -10,7 +10,7 @@ class Informe extends BaseController
     {
         if(!session()->get('isLoggedIn')) {
 			return redirect()->to(route_to('login'));
-		} elseif (!session()->get('rolId')==1){
+		} elseif (!session()->get('rol')==1){
             return redirect()->to(route_to('dashboard'));
         } else {
 			// helper(['form']);

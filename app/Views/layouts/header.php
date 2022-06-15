@@ -18,7 +18,7 @@
         <ul class="navbar-nav mx-auto ">
           <li class="nav-item mx-2"> <i class="fas fa-user-circle    "></i> <?= $session->name ?> </li>
           <li class="nav-item mx-2"> <i class="fas fa-key    "></i>
-            <?= $session->rolId==1? "Administrador" : "Usuario" ?> </li>
+            <?= $session->rol==1? "Administrador" : "Usuario" ?> </li>
           <li class="nav-item mx-2"> <i class="fas fa-calendar-check    "></i>
             <?= $session->ultimoAcceso? "Ultima conexion:" . date('d M H:i',strtotime($session->ultimoAcceso)) ."h": "Primer acceso" ?>
           </li>

@@ -6,10 +6,6 @@ Informe de consumo
 
 
 <?= $this->section('content') ?>
-<?php
-// $numero = 2;
-// d($numero);
-?>
 
 <div class="card col h-100 m-2">
     <div class="card-header">

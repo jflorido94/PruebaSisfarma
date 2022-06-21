@@ -53,50 +53,41 @@ Informe de consumo
         <table class="table table-striped table-responsive my-3">
             <thead class="">
                 <tr>
-                    <th>Columna</th>
-                    <th>Columna</th>
-                    <th>Columna</th>
+                    <th>Cliente</th>
+                    <th>Importe total de ventas</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td scope="row">Campo</td>
                     <td>Campo</td>
-                    <td>Campo</td>
                 </tr>
                 <tr>
                     <td scope="row">CAmpo</td>
-                    <td>Campo</td>
                     <td>Campo</td>
                 </tr>
                 <tr>
                     <td scope="row">Campo</td>
                     <td>Campo</td>
-                    <td>Campo</td>
                 </tr>
                 <tr>
                     <td scope="row">CAmpo</td>
-                    <td>Campo</td>
                     <td>Campo</td>
                 </tr>
                 <tr>
                     <td scope="row">Campo</td>
                     <td>Campo</td>
-                    <td>Campo</td>
                 </tr>
                 <tr>
                     <td scope="row">CAmpo</td>
-                    <td>Campo</td>
                     <td>Campo</td>
                 </tr>
                 <tr>
                     <td scope="row">Campo</td>
                     <td>Campo</td>
-                    <td>Campo</td>
                 </tr>
                 <tr>
                     <td scope="row">CAmpo</td>
-                    <td>Campo</td>
                     <td>Campo</td>
                 </tr>
             </tbody>
